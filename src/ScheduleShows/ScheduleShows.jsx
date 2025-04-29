@@ -4,25 +4,23 @@ import { useState, useEffect } from 'react';
 function ScheduleShows({ selectedSchedule, onShowDelete }) {
     const [shows, setShows] = useState(selectedSchedule?.shows || []);
 
-    async function handleDeleteShow(scheduleShowId) {
+    const handleDeleteShow = async (scheduleShowId) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/v1/schedules/${selectedSchedule.id}/schedule_shows/${scheduleShowId}`, {
-                method: 'DELETE',
-            });
-
+            const response = await fetch(
+                `http://localhost:3000/api/v1/schedules/${selectedSchedule.id}/schedule_shows/${scheduleShowId}`,
+                { method: 'DELETE' }
+            );
+    
             if (response.ok) {
-                setShows(prevShows => prevShows.filter(show => show.id !== scheduleShowId));
-
-                if (onShowDelete) {
-                    onShowDelete(scheduleShowId);
-                }
+                setShows(prev => prev.filter(ss => ss.id !== scheduleShowId));
+                if (onShowDelete) onShowDelete(scheduleShowId);
             } else {
-                console.error(`Failed to delete show ${scheduleShowId}:`, response.statusText);
+                console.error(`Failed to delete:`, response.statusText);
             }
-        } catch (error) {
-            console.error('Error deleting show:', error);
+        } catch (err) {
+            console.error('Error deleting show:', err);
         }
-    }
+    };
 
     useEffect(() => {
         setShows(selectedSchedule?.shows || []);
@@ -37,11 +35,11 @@ function ScheduleShows({ selectedSchedule, onShowDelete }) {
             <p>{selectedSchedule.name}'s shows!</p>
             <section className="show-list">
                 {shows.length > 0 ? (
-                    shows.map(show => (
-                        <button key={show.id} onClick={() => handleDeleteShow(show.id)}>
-                            {show.name} – {show.time}
-                        </button>
-                    ))
+                   shows.map(scheduleShow => (
+                    <button key={scheduleShow.id} onClick={() => handleDeleteShow(scheduleShow.id)}>
+                        {scheduleShow.show.name} – {scheduleShow.show.time}
+                    </button>
+                  ))
                 ) : (
                     <p>No shows in the schedule!</p>
                 )}

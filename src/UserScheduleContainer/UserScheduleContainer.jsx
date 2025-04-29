@@ -28,8 +28,17 @@ function UserScheduleContainer() {
         fetchSchedules();
     }, [id]);
 
-    function processSchedule(schedule) {
-        setSelectedSchedule(schedule);
+    async function processSchedule(schedule) {
+        try {
+            const response = await fetch(`http://localhost:3000/api/v1/schedules/${schedule.id}/schedule_shows`);
+            const data = await response.json();
+            setSelectedSchedule({
+                ...schedule,
+                shows: data
+            });
+        } catch (err) {
+            console.error('Error fetching schedule shows:', err);
+        }
     }
 
     function handleShowDeletion(deletedShowId) {
