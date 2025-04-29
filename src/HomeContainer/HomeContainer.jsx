@@ -24,7 +24,7 @@ function HomeContainer() {
     }, []);
 
     function processLogin(userid){
-        navigate(`/user/${userid}/schedules`)
+        navigate(`/users/${userid}/schedules`)
     }
 
     return (
