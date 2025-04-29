@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './UserScheduleContainer.css'
-import ScheduleBuilder from '../ScheduleBuilder/ScheduleBuilder.jsx'
+import ScheduleShows from '../ScheduleShows/ScheduleShows.jsx'
 
 function UserScheduleContainer() {
 
@@ -44,7 +44,7 @@ function UserScheduleContainer() {
             </section>
 
             <section className="schedule-builder">
-                <ScheduleBuilder schedules={selectedSchedule}/>
+                <ScheduleShows schedules={selectedSchedule}/>
             </section>
         </div>
     )
