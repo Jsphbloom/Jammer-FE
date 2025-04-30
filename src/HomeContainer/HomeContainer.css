@@ -1,0 +1,83 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 4rem auto;
+    background-color: #b37ac4;
+    border-radius: 1rem;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+
+.home-container p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.user-list button {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #544f6e;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.user-list button:hover {
+    background-color: #555;
+}
+
+
+.home-container > button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.home-container > button:hover {
+    background-color: #0056b3;
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: auto;
+    margin-bottom: 2rem;
+}
+
+.schedule-list button {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #544f6e;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-items: center;
+    justify-content: center;
+}

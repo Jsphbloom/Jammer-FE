@@ -24,17 +24,26 @@ function HomeContainer() {
     }, []);
 
     function processLogin(userid){
-        navigate(`/user/${userid}/schedules`)
+        navigate(`/users/${userid}/schedules`)
+    }
+
+    function showSchedules(){
+        navigate('/schedules')
     }
 
     return (
         <div>
             <p>Welcome to Jammer! Please select a user to continue.</p>
-            {users.map(user => (
-                <button key={user.id} onClick={() => processLogin(user.id)}>
-                    {user.name}
-                </button>
-            ))}
+            <section className='user-list'>
+                {users.map(user => (
+                    <button key={user.id} onClick={() => processLogin(user.id)}>
+                        {user.name}
+                    </button>
+                ))}
+            </section>
+            <button className='schedule-list' onClick={() => showSchedules()}>
+                Or, click here to see all schedules!
+            </button>
         </div>
     )
 }

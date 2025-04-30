@@ -1,0 +1,98 @@
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    gap: 2rem;
+    margin: 0 auto;
+}
+
+.schedule-container {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    gap: 2rem;
+    align-items: center;
+    margin: 2rem auto;
+    justify-content: space-between;
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.schedule-list button {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid #201616;
+    background: #392b2b;
+    cursor: pointer;
+}
+
+.schedule-shows {
+    flex: 1;
+    padding: 1rem;
+    background: #392b2b;
+    border-radius: 8px;
+    border: 1px solid #201616;
+}
+
+.show-list {
+    display: flex;
+    flex: 2;
+    gap: 1rem;
+}
+
+.show-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background-color: #434159;
+    border-radius: 5px;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.home {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.home:hover {
+    background-color: #0056b3;
+}
+
+.schedule-list .make-new {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: #28a745;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.schedule-list .make-new:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
