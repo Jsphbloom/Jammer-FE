@@ -12,10 +12,10 @@ function App() {
 
   return (
     <div>
-    <main className='App'>
       <header>
         <h1>Jammer</h1>
       </header>
+    <main className='App'>
       <Routes>
         <Route path="/" element={<HomeContainer />}/>
         <Route path="/users" element={<UsersContainer />}/>

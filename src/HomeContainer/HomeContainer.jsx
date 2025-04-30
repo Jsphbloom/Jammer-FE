@@ -41,7 +41,7 @@ function HomeContainer() {
                     </button>
                 ))}
             </section>
-            <button key='schedule-list' onClick={() => showSchedules()}>
+            <button className='schedule-list' onClick={() => showSchedules()}>
                 Or, click here to see all schedules!
             </button>
         </div>

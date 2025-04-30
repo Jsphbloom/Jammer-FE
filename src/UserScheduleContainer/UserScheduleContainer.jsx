@@ -115,9 +115,12 @@ function UserScheduleContainer() {
 
     return (
         <div className='main-wrapper'>
-            <p>Here are the schedules.</p>
+            <button className='home' onClick={() => goHome()}>
+                    Go Home!
+            </button>
             <div className='schedule-container'>
                 <section className="schedule-list">
+                    <p>Here are the schedules.</p>
                     {schedules.map(schedule => (
                         <button key={schedule.name} onClick={() => processSchedule(schedule)}>
                             <img src={randomIcon} alt="icon" style={{ width: '20px', marginRight: '8px' }} />
@@ -126,7 +129,7 @@ function UserScheduleContainer() {
                     ))}
         
                     {creatingNewSchedule ? null : (
-                        <button key="make-new" onClick={createSchedule}>
+                        <button className="make-new" onClick={createSchedule}>
                             Make new schedule
                         </button>
                     )}
@@ -172,9 +175,7 @@ function UserScheduleContainer() {
                     </section>
                 )}
             </div>
-                <button className='home' onClick={() => goHome()}>
-                    Go Home!
-                </button>
+                
         </div>
     );
 }

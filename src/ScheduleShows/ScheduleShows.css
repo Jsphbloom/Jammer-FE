@@ -1,12 +1,27 @@
+.schedule-shows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem; 
+    box-sizing: border-box; 
+    background-color: #3d2a43; 
+    border-radius: 1rem; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .schedule-show-container {
-    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 1.5rem;
     background-color: #544052;
     border-radius: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    margin: 0 auto;
-    align-items: left;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .schedule-show-container > p {
@@ -32,13 +47,17 @@
 }
 
 .show-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     margin-top: 1.5rem;
+    width: 100%;
+    justify-content: center;
 }
 
 .show-card {
+    flex: 1 1 300px;
+    max-width: 100%;
     background-color: rgb(38, 40, 49);
     border-radius: 0.75rem;
     padding: 1rem;
