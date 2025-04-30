@@ -58,7 +58,7 @@ function ScheduleShows({ selectedSchedule, onShowDelete, setSelectedSchedule }) 
     });
     
     return (
-        <div>
+        <div className = 'schedule-show-container'>
             <p>{selectedSchedule.name}'s shows!</p>
             <button onClick={toggleSortOrder}>
                 Sort {isAscending ? 'Descending' : 'Ascending'}

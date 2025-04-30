@@ -114,66 +114,67 @@ function UserScheduleContainer() {
     const randomIcon = getRandomIcon();
 
     return (
-        <div>
+        <div className='main-wrapper'>
             <p>Here are the schedules.</p>
-    
-            <section className="schedule-list">
-                {schedules.map(schedule => (
-                    <button key={schedule.name} onClick={() => processSchedule(schedule)}>
-                        <img src={randomIcon} alt="icon" style={{ width: '20px', marginRight: '8px' }} />
-                        {schedule.name}
-                    </button>
-                ))}
-    
-                {creatingNewSchedule ? null : (
-                    <button key="make-new" onClick={createSchedule}>
-                        Make new schedule
-                    </button>
-                )}
-            </section>
-    
-            {creatingNewSchedule ? (
-                <section className="new-schedule">
-                    <input
-                        type="text"
-                        placeholder="Enter schedule name"
-                        value={newScheduleName}
-                        onChange={(e) => setNewScheduleName(e.target.value)}
-                    />
-                    <h3>Shows:</h3>
-                    {allShows.map(show => (
-                        console.log(show.name),
-                        <button key={show.id} onClick={() => addShowToNewSchedule(show)}>
-                            {show.name} – {show.time}
+            <div className='schedule-container'>
+                <section className="schedule-list">
+                    {schedules.map(schedule => (
+                        <button key={schedule.name} onClick={() => processSchedule(schedule)}>
+                            <img src={randomIcon} alt="icon" style={{ width: '20px', marginRight: '8px' }} />
+                            {schedule.name}
                         </button>
                     ))}
-    
-                    <h4>Selected Shows:</h4>
-                    <ul>
-                        {newScheduleShows.map(show => (
-                            <li key={show.id}>{show.name}</li>
-                        ))}
-                    </ul>
-    
-                    <button onClick={saveNewSchedule}>Save Schedule</button>
-                    <button onClick={() => setCreatingNewSchedule(false)}>Cancel</button>
-                </section>
-            ) : (
-                <section className="schedule-shows">
-                    {selectedSchedule ? (
-                        <ScheduleShows
-                            selectedSchedule={selectedSchedule}
-                            setSelectedSchedule={setSelectedSchedule}
-                            onShowDelete={handleShowDeletion}
-                        />
-                    ) : (
-                        <p>Select a schedule to begin editing.</p>
+        
+                    {creatingNewSchedule ? null : (
+                        <button key="make-new" onClick={createSchedule}>
+                            Make new schedule
+                        </button>
                     )}
                 </section>
-            )}
-            <button className='home' onClick={() => goHome()}>
-                Go Home!
-            </button>
+        
+                {creatingNewSchedule ? (
+                    <section className="new-schedule">
+                        <input
+                            type="text"
+                            placeholder="Enter schedule name"
+                            value={newScheduleName}
+                            onChange={(e) => setNewScheduleName(e.target.value)}
+                        />
+                        <h3>Shows:</h3>
+                        {allShows.map(show => (
+                            console.log(show.name),
+                            <button key={show.id} onClick={() => addShowToNewSchedule(show)}>
+                                {show.name} – {show.time}
+                            </button>
+                        ))}
+        
+                        <h4>Selected Shows:</h4>
+                        <ul>
+                            {newScheduleShows.map(show => (
+                                <li key={show.id}>{show.name}</li>
+                            ))}
+                        </ul>
+        
+                        <button onClick={saveNewSchedule}>Save Schedule</button>
+                        <button onClick={() => setCreatingNewSchedule(false)}>Cancel</button>
+                    </section>
+                ) : (
+                    <section className="schedule-shows">
+                        {selectedSchedule ? (
+                            <ScheduleShows
+                                selectedSchedule={selectedSchedule}
+                                setSelectedSchedule={setSelectedSchedule}
+                                onShowDelete={handleShowDeletion}
+                            />
+                        ) : (
+                            <p>Select a schedule to begin editing.</p>
+                        )}
+                    </section>
+                )}
+            </div>
+                <button className='home' onClick={() => goHome()}>
+                    Go Home!
+                </button>
         </div>
     );
 }

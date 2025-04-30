@@ -25,7 +25,7 @@ function SchedulesPage(){
     }
 
     return (
-        <div>
+        <div className='all-schedules-container'>
             <h2>All Schedules</h2>
             <ul>
                 {schedules.map(schedule => (
@@ -39,7 +39,7 @@ function SchedulesPage(){
                                             <details>
                                                 <summary>{show.name} — {show.time}</summary>
                                                 <div>
-                                                    <h4>Attendees:</h4>
+                                                    {/* <h4>Attendees:</h4>
                                                     <ul>
                                                         {show.users && show.users.length > 0 ? (
                                                             show.users.map(user => (
@@ -48,7 +48,7 @@ function SchedulesPage(){
                                                         ) : (
                                                             <li>No attendees</li>
                                                         )}
-                                                    </ul>
+                                                    </ul> */}
                                                 </div>
                                             </details>
                                         </li>
