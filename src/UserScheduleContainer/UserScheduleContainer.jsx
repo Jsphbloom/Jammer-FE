@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './UserScheduleContainer.css';
 import ScheduleShows from '../ScheduleShows/ScheduleShows.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function UserScheduleContainer() {
     const { id } = useParams();
@@ -12,6 +13,8 @@ function UserScheduleContainer() {
     const [creatingNewSchedule, setCreatingNewSchedule] = useState(false);
     const [newScheduleName, setNewScheduleName] = useState('');
     const [shows, setShows] = useState(selectedSchedule?.shows || []);
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (selectedSchedule) {
@@ -95,6 +98,10 @@ function UserScheduleContainer() {
         }
     }
 
+    function goHome() {
+        navigate('/');
+    }
+
     return (
         <div>
             <p>Here are the schedules.</p>
@@ -152,6 +159,9 @@ function UserScheduleContainer() {
                     )}
                 </section>
             )}
+            <button className='home' onClick={() => goHome()}>
+                Go Home!
+            </button>
         </div>
     );
 }

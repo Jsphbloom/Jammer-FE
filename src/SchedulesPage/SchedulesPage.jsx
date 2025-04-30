@@ -36,7 +36,21 @@ function SchedulesPage(){
                                 {schedule.shows?.length > 0 ? (
                                     schedule.shows.map(show => (
                                         <li key={show.id}>
-                                            {show.name} — {show.time}
+                                            <details>
+                                                <summary>{show.name} — {show.time}</summary>
+                                                <div>
+                                                    <h4>Attendees:</h4>
+                                                    <ul>
+                                                        {show.users && show.users.length > 0 ? (
+                                                            show.users.map(user => (
+                                                                <li key={user.id}>{user.name}</li>
+                                                            ))
+                                                        ) : (
+                                                            <li>No attendees</li>
+                                                        )}
+                                                    </ul>
+                                                </div>
+                                            </details>
                                         </li>
                                     ))
                                 ) : (
