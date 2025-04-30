@@ -4,6 +4,10 @@ import './UserScheduleContainer.css';
 import ScheduleShows from '../ScheduleShows/ScheduleShows.jsx';
 import { useNavigate } from 'react-router-dom';
 
+import icon1 from '../assets/icons/icon1.png';
+import icon2 from '../assets/icons/icon2.png';
+import icon3 from '../assets/icons/icon3.png';
+
 function UserScheduleContainer() {
     const { id } = useParams();
     const [schedules, setSchedules] = useState([]);
@@ -13,6 +17,8 @@ function UserScheduleContainer() {
     const [creatingNewSchedule, setCreatingNewSchedule] = useState(false);
     const [newScheduleName, setNewScheduleName] = useState('');
     const [shows, setShows] = useState(selectedSchedule?.shows || []);
+
+    const icons = [icon1, icon2, icon3];
 
     const navigate = useNavigate()
 
@@ -102,6 +108,11 @@ function UserScheduleContainer() {
         navigate('/');
     }
 
+    function getRandomIcon() {
+        return icons[Math.floor(Math.random() * icons.length)];
+    }
+    const randomIcon = getRandomIcon();
+
     return (
         <div>
             <p>Here are the schedules.</p>
@@ -109,6 +120,7 @@ function UserScheduleContainer() {
             <section className="schedule-list">
                 {schedules.map(schedule => (
                     <button key={schedule.name} onClick={() => processSchedule(schedule)}>
+                        <img src={randomIcon} alt="icon" style={{ width: '20px', marginRight: '8px' }} />
                         {schedule.name}
                     </button>
                 ))}
