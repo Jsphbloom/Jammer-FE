@@ -1,8 +1,30 @@
 import './ScheduleShows.css';
 import { useState, useEffect } from 'react';
 
-function ScheduleShows({ selectedSchedule, onShowDelete }) {
-    const [shows, setShows] = useState(selectedSchedule?.shows || []);
+function ScheduleShows({ selectedSchedule, onShowDelete, setSelectedSchedule }) {
+
+
+    useEffect(() => {
+        if (selectedSchedule && selectedSchedule.id) {
+            async function fetchShows() {
+                try {
+                    const response = await fetch(`http://localhost:3000/api/v1/schedules/${selectedSchedule.id}/schedule_shows`);
+                    const data = await response.json();
+                    if (data && data.length > 0) {
+                        setSelectedSchedule(prevSchedule => ({
+                            ...prevSchedule,
+                            shows: data
+                        }));
+                    }
+                } catch (error) {
+                    console.error('Error fetching schedule shows:', error);
+                }
+            }
+            
+            fetchShows();
+        }
+    }, [selectedSchedule?.id]);
+
 
     const handleDeleteShow = async (scheduleShowId) => {
         try {
@@ -10,9 +32,8 @@ function ScheduleShows({ selectedSchedule, onShowDelete }) {
                 `http://localhost:3000/api/v1/schedules/${selectedSchedule.id}/schedule_shows/${scheduleShowId}`,
                 { method: 'DELETE' }
             );
-    
+
             if (response.ok) {
-                setShows(prev => prev.filter(ss => ss.id !== scheduleShowId));
                 if (onShowDelete) onShowDelete(scheduleShowId);
             } else {
                 console.error(`Failed to delete:`, response.statusText);
@@ -22,30 +43,27 @@ function ScheduleShows({ selectedSchedule, onShowDelete }) {
         }
     };
 
-    useEffect(() => {
-        setShows(selectedSchedule?.shows || []);
-    }, [selectedSchedule]);
-
     if (!selectedSchedule || !selectedSchedule.shows) {
         return <p>No schedule selected or schedule is missing shows.</p>;
     }
 
     return (
         <div>
-            <p>{selectedSchedule.name}'s shows!</p>
-            <section className="show-list">
-                {shows.length > 0 ? (
-                   shows.map(scheduleShow => (
-                    <button key={scheduleShow.id} onClick={() => handleDeleteShow(scheduleShow.id)}>
-                        {scheduleShow.show.name} – {scheduleShow.show.time}
-                    </button>
-                  ))
-                ) : (
-                    <p>No shows in the schedule!</p>
-                )}
-            </section>
+            {console.log(selectedSchedule.shows)}
+          <p>{selectedSchedule.name}'s shows!</p>
+          <section className="show-list">
+            {selectedSchedule.shows.length > 0 ? (
+              selectedSchedule.shows.map(show => (
+                <button key={show.id} onClick={() => handleDeleteShow(show.id)}>
+                    {show?.show?.name} – {show?.show?.time}
+                </button>
+              ))
+            ) : (
+              <p>No shows in the schedule!</p>
+            )}
+          </section>
         </div>
-    );
+      );
 }
 
 export default ScheduleShows;
